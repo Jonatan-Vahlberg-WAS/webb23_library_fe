@@ -4,6 +4,8 @@ import {
   RouterProvider
 } from "react-router-dom"
 import RootLayout from './routes/Root';
+import Home from './routes/Home';
+import Login from './routes/Login';
 
 const router  = createBrowserRouter([
   {
@@ -11,11 +13,11 @@ const router  = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <h2>home</h2>
+        element: <Home/>
       },
       {
         path: "/login",
-        element: <h2>login</h2>
+        element: <Login/>
       }
     ]
 
