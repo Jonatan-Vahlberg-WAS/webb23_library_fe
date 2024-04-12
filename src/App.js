@@ -1,31 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+  createBrowserRouter,
+  RouterProvider
+} from "react-router-dom"
+import RootLayout from './routes/Root';
+
+const router  = createBrowserRouter([
+  {
+    element: <RootLayout/>,
+    children: [
+      {
+        index: true,
+        element: <h2>home</h2>
+      },
+      {
+        path: "/login",
+        element: <h2>login</h2>
+      }
+    ]
+
+  }
+])
 
 function App() {
-  fetch(process.env.REACT_APP_BACKEND_URL+"/api/v1/authors")
-    .then(response => {
-      response.json()
-      .then(response => {
-        console.log("Resp", response)
-        }) 
-    })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RouterProvider router={router}/>
   );
 }
 
