@@ -4,7 +4,9 @@ function RootLayout() {
   return (
     <div>
       <header>
-        <h1>Library</h1>
+        <Link to="/">
+            <h1>Library</h1>
+        </Link>
         <nav>
           <ul>
             <li>
