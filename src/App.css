@@ -76,7 +76,8 @@ nav ul li > a:visited {
 }
 
 
-#login-form {
+#login-form,
+#register-form {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -90,19 +91,22 @@ nav ul li > a:visited {
   margin-top: 100px;
 }
 
-#login-form input {
+#login-form input,
+#register-form input {
   padding: 8px;
   border: none;
   font-size: 1rem;
   color: var(--secondary-color);
 }
 
-#login-form input:focus {
+#login-form input:focus,
+#register-form input:focus {
   outline: none;
   border-bottom: 1px solid var(--primary-color);
 }
 
-#login-form button {
+#login-form button,
+#register-form button {
   padding: 8px;
   border: none;
   background-color: var(--primary-color);
@@ -113,7 +117,10 @@ nav ul li > a:visited {
 
 #login-form button:hover,
 #login-form button:active,
-#login-form button:focus{
+#login-form button:focus,
+#register-form button:hover,
+#register-form button:active,
+#register-form button:focus{
   background-color: var(--primary-color-dark);
 }
 
