@@ -8,14 +8,14 @@ function AdminBooks() {
     const [authors, setAuthors] = useState([])
     const [books, setBooks] = useState([])
     const [error, setError] = useState(null)
-    const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [token, setToken] = useState(false)
 
     useEffect(() => {
        getAuthors()
        getBooks()
         const token = localStorageKit.getTokenFromStorage()
        if(token?.access) {
-        setIsAuthenticated(true)
+        setToken(token)
        }
     }, [])
 
@@ -57,13 +57,33 @@ function AdminBooks() {
                 alert("Book was addded to library")
             })
             .catch((error) => {
-                console.log(error.response.data)
-                const message = error?.response?.data?.message || "Something went wrong"
-                console.warn("Error adding new book", message)
-                setError(message)
+                console.log(error.response)
+                const onError = () => {
+                    const message = error?.response?.data?.message || "Something went wrong"
+                    console.warn("Error adding new book", message)
+                    setError(message)
+                }
+                if(error.response.status === 401){
+                    return apiKit.post("api/v1/auth/refresh", {
+                        refreshToken: token.refresh
+                    })
+                    .then(response => {
+                        console.log(response)
+                        localStorageKit.setTokenInStorage(response.data)
+                        //TODO: redo request
+                    })
+                    .catch(error => {
+                        const message = error?.response?.data?.message || "Something went wrong"
+                        console.warn("Error refreshing token", message)
+                        //TODO: kick out user
+                        localStorageKit.deleteTokenFormStorage()
+                        setToken(null)
+                    })
+                }
+                onError()
             })
     }
-    if(!isAuthenticated) {
+    if(!token) {
         return (
             <h2 style={{ color: "red"}}>
                 User is not "Authenticated"
