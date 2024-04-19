@@ -116,3 +116,23 @@ nav ul li > a:visited {
 #login-form button:focus{
   background-color: var(--primary-color-dark);
 }
+
+.books {
+  display:  flex;
+  flex-direction: row;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.book {
+  background-color: var(--primary-color);
+  color: white;
+  width: 250px;
+  padding: 16px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.book:hover {
+  background-color: var(--primary-color-dark);
+}
