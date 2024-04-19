@@ -1,9 +1,10 @@
 import { useState } from "react";
 import apiKit from "../util/ApiKit";
 import localStorageKit from "../util/LocalStorageKit";
-
+import { useNavigate } from "react-router-dom"
 
 function Login() {
+    const navigate = useNavigate()
     const [error, setError] = useState(null)
 
     const handleSubmit = (e) => {
@@ -18,6 +19,7 @@ function Login() {
             .then(response => {
                 const token = response.data
                 localStorageKit.setTokenInStorage(token)
+                navigate("/")
             })
             .catch(error => {
                 const message = error.response.data.message
@@ -30,10 +32,10 @@ function Login() {
     return (
         <form onSubmit={handleSubmit} id="login-form">
             <div>
-                <input name="email" id="email" type="email" placeholder="Email" value="email.test6@mail.com"/>
+                <input name="email" id="email" type="email" placeholder="Email"/>
             </div>
             <div>
-                <input name="password" id="password" type="password" placeholder="Password" value="password123"/>
+                <input name="password" id="password" type="password" placeholder="Password"/>
             </div>
             {error && (
                 <p>
