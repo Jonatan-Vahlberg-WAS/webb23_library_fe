@@ -131,6 +131,7 @@ nav ul li > a:visited {
   padding: 16px;
   transition: all 0.2s;
   cursor: pointer;
+  aspect-ratio: 9/12;
 }
 
 .book:hover {

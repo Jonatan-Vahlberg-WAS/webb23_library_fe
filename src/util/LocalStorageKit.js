@@ -1,3 +1,4 @@
+import apiKit from "./ApiKit"
 
 
 class LocalStorageKit {
@@ -6,13 +7,17 @@ class LocalStorageKit {
 
     setTokenInStorage(token) {
         localStorage.setItem(this.STORAGE_TOKEN_KEY, JSON.stringify(token))
+        apiKit.defaults.headers.common['Authorization'] = `Bearer ${token.access}`
     }
 
     getTokenFromStorage() {
         const token = localStorage.getItem(this.STORAGE_TOKEN_KEY)
         if(token) {
-            return JSON.parse(token)
+            const parsedToken = JSON.parse(token)
+            apiKit.defaults.headers.common['Authorization'] = `Bearer ${parsedToken?.access}`
+            return parsedToken
         }
+        return null
     }
 
     deleteTokenFormStorage() {

@@ -6,6 +6,8 @@ import {
 import RootLayout from './routes/Root';
 import Home from './routes/Home';
 import Login from './routes/Login';
+import { useEffect } from 'react';
+import localStorageKit from './util/LocalStorageKit';
 
 const router  = createBrowserRouter([
   {
@@ -25,6 +27,9 @@ const router  = createBrowserRouter([
 ])
 
 function App() {
+  useEffect(() => {
+    localStorageKit.getTokenFromStorage()
+  },[])
   return (
     <RouterProvider router={router}/>
   );
