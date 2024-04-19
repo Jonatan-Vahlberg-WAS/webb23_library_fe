@@ -28,7 +28,7 @@ function Login() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} id="login-form">
             <div>
                 <input name="email" id="email" type="email" placeholder="Email" value="email.test6@mail.com"/>
             </div>

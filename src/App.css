@@ -1,38 +1,118 @@
-.App {
-  text-align: center;
+
+:root {
+  --primary-color: #006ebf;
+  --primary-color-light: #0077cc;
+  --primary-color-dark: #005fa3;
+  --secondary-color: #282c34;
+  --tertiary-color: #f3f3f3;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+}
+
+#content {
+  flex: 1;
+  padding: 20px;
+}
+
+header {
+  border-bottom: #282c3420 1px solid;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 0 20px;
+}
+
+footer {
+  border-top: #282c3420 1px solid;
+  background-color: var(--secondary-color);
   color: white;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
-.App-link {
-  color: #61dafb;
+a,
+a:visited {
+  color: var(--primary-color);
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a:hover {
+  color: var(--primary-color-dark);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 8px;
+}
+
+nav ul li > a,
+nav ul li > a:visited {
+  padding: 16px;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+}
+
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(400px, 100%);
+  margin: 0 auto;
+  text-align: center;
+  background-color: var(--tertiary-color);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  gap: 16px;
+  margin-top: 100px;
+}
+
+#login-form input {
+  padding: 8px;
+  border: none;
+  font-size: 1rem;
+  color: var(--secondary-color);
+}
+
+#login-form input:focus {
+  outline: none;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+#login-form button {
+  padding: 8px;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#login-form button:hover,
+#login-form button:active,
+#login-form button:focus{
+  background-color: var(--primary-color-dark);
 }

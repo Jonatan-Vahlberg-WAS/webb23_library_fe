@@ -2,7 +2,7 @@ import { Outlet, Link } from "react-router-dom";
 
 function RootLayout() {
   return (
-    <div>
+    <div id="root">
       <header>
         <Link to="/">
             <h1>Library</h1>
@@ -18,7 +18,7 @@ function RootLayout() {
           </ul>
         </nav>
       </header>
-      <main>
+      <main id="content">
         <Outlet />
       </main>
       <footer>
