@@ -8,6 +8,7 @@ import Home from './routes/Home';
 import Login from './routes/Login';
 import { useEffect } from 'react';
 import localStorageKit from './util/LocalStorageKit';
+import Register from './routes/Register';
 
 const router  = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router  = createBrowserRouter([
       {
         path: "/login",
         element: <Login/>
+      },
+      {
+        path: "/register",
+        element: <Register/>
       }
     ]
 
